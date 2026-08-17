@@ -22,7 +22,7 @@ int solve(vector<int>&stoneValue , int i , int j){
             ans=max(ans,rightSum+solve(stoneValue,k+1,j));
         }
         else{
-            ans=max(ans, leftSum + max(solve(stoneValue, i, k),
+            ans=max(ans, rightSum + max(solve(stoneValue, i, k),
                               solve(stoneValue, k+1, j)));
         }
     }
