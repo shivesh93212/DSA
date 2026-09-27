@@ -3,29 +3,28 @@ public:
     string reverseParentheses(string s) {
         
 
-        stack<int>st;
-      
+        stack<string>st;
+         string curr="";
         for(int i=0;i<s.size();i++){
             if(s[i]=='('){
-                st.push(i);
+                st.push(curr);
+                curr="";
+
 
             }
-            if(s[i]==')'){
-
-                int val=st.top();
-                st.pop();
+            else if(s[i]==')'){
  
-                reverse(s.begin()+val,s.begin()+i);
+                reverse(curr.begin(),curr.end());
+                curr=st.top()+curr;
+                st.pop();
             }
+            else{
+                curr+=s[i];
+            }
+
         }
 
-        string ans="";
-        for(auto & ch : s){
-            if(isalpha(ch)){
-                ans+=ch;
-            }
-        }
-
-        return ans;
+       
+        return curr;
     }
 };
